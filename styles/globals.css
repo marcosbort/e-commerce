@@ -20,7 +20,144 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: rgb(39, 39, 39);
+    background: white;
+    background: #ececec;
+
+    /* Agregado */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
   }
 }
+
+/* Product.module.scss */
+.plan-card {
+  position: relative;
+  background: #fff;
+  width: 230px;
+  height: 425px;
+  height: 398px;
+  height: 425px;
+  padding: 10px 0 20px 0;
+  border-radius: 10px;
+  /* border-bottom: 3px solid #000446; */
+  box-shadow: 0 6px 30px rgba(207, 212, 222, 0.3);
+  font-family: "Poppins", sans-serif;
+  z-index: 0;
+}
+
+.card-image {
+  position: absolute;
+  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  width: 98%;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.plan-card h2 {
+  margin: 12px 0 0 26px;
+  font-size: 27px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.plan-card h2 span {
+  display: block;
+  color: #4d4d4d;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 3px 0 20px 0;
+  z-index: 2;
+}
+
+.etiquet-price {
+  position: absolute;
+  background: #fdbd4a;
+  width: 224px;
+  top: 126px;
+  top: 300px;
+  right: -13px;
+  border-radius: 5px 0 0 5px;
+  z-index: 2;
+}
+
+.etiquet-price p {
+  margin: 0;
+  padding: 5px 0 4px 20px;
+  display: flex;
+  font-size: 30px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.etiquet-price p:before {
+  content: "$";
+  /* margin-right: 10px; */
+  margin: 4px 10px 4px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.etiquet-price div {
+  position: absolute;
+  bottom: -23px;
+  right: 0px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid #c58102;
+  border-bottom: 10px solid transparent;
+  border-right: 13px solid transparent;
+  z-index: -6;
+}
+
+.button-get-plan {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  /* margin: 295px 0 0 0; */
+  width: 100%;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.button-get-plan a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000446;
+  background: #fdbd4a;
+  background: #000446;
+  color: #fff;
+  padding: 10px 15px;
+  padding: 14px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: .8rem;
+  letter-spacing: .05rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.button-get-plan a:hover {
+  transform: translateY(-3%);
+  box-shadow: 0 3px 10px rgba(207, 212, 222, 0.9);
+  z-index: 2;
+}
+
+.button-get-plan .svg-rocket {
+  margin-right: 10px;
+  width: .9rem;
+  fill: currentColor;
+  z-index: 2;
+}
+/* FIN Product.module.scss */
