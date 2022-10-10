@@ -1,14 +1,15 @@
+import { ProductType } from '../types'
 import styles from './Product.module.scss'
 
-export default function Product() {
+export default function Product({id, brand, description, category, image, price}: ProductType) {
   return (
     <>
       <div className={styles['Product']}>
-        <h2 className={styles['Product__brand']}> Dog Chow </h2>
-        <p className={styles['Product__description']}>Cachorros 21kg</p>
+        <h2 className={styles['Product__brand']}> {brand} </h2>
+        <p className={styles['Product__description']}> {description} </p>
 
         <div className={styles['Product__etiquet']}>
-          <p className={styles['Product__etiquet__price']}>8.500</p>
+          <p className={styles['Product__etiquet__price']}>{price}</p>
           <div></div>
         </div>
         
@@ -18,7 +19,7 @@ export default function Product() {
           </a>
         </div>
         {/* <img className="card-image" src="" alt="foto" /> */}
-        <img className={styles['Product__image']} src="https://marcosbort.github.io/server/images/pet-food/tiernitos-adultos.jpg" alt="foto" />
+        <img className={styles['Product__image']} src={image} alt="foto" />
       </div>
     </>
   )

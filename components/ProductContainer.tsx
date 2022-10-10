@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Product } from '../types'
+import { ProductType } from '../types'
+import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
 
 export default function ProductContainer() {
-  const [products, setProducts] = useState<Product[]>()
+  const [products, setProducts] = useState<ProductType[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getProducts = useCallback(async () => {
@@ -14,7 +15,7 @@ export default function ProductContainer() {
     })
     Papa.parse(data, {
       header: true,
-      complete: (results) => setProducts(results.data as Product[]),
+      complete: (results) => setProducts(results.data as ProductType[]),
       error: (error) => error.message,
     })
     setIsLoading(false)
@@ -32,7 +33,18 @@ export default function ProductContainer() {
         ? (
           <h2>Loading...</h2>
         ) : (
-          <h1>ProductContainer</h1>
+          products?.map((product, index) =>
+          <>
+            <Product
+              id={product.id}
+              brand={product.brand}
+              description={product.description}
+              category={product.category}
+              image={product.image}
+              price={product.price}
+            />
+          </>
+          )
         )}
     </>
   )
