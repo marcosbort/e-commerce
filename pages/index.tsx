@@ -12,7 +12,6 @@ const Home: NextPage = () => {
         <link rel="icon" type="favicon/x-con" href="https://marcosbort.github.io/favicon-mb/favicon.png" />
       </Head>
       <ProductContainer />
-      {/* <Product /> */}
     </>
   )
 }

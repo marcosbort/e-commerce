@@ -23,12 +23,5 @@ a {
     color: rgb(39, 39, 39);
     background: white;
     background: #ececec;
-
-    /* Agregado */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 60px;
   }
 }

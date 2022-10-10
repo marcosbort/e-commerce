@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ProductType } from '../types'
+import styles from './ProductContainer.module.scss'
 import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
@@ -28,24 +29,28 @@ export default function ProductContainer() {
   }, [getProducts])
 
   return (
-    <>
+    <div className={styles['ProductContainer']}>
+      <h2 className={styles['ProductContainer__title']}>Para Tus Amigos</h2>
+    <div className={styles['ProductContainer__product-box']}>
       {isLoading
         ? (
-          <h2>Loading...</h2>
+          <h2 className={styles['ProductContainer__loading']}>Loading...</h2>
         ) : (
           products?.map((product, index) =>
-          <>
-            <Product
-              id={product.id}
-              brand={product.brand}
-              description={product.description}
-              category={product.category}
-              image={product.image}
-              price={product.price}
-            />
-          </>
+            <div key={product.id}>
+                <Product
+                  key={product.id}
+                  id={product.id}
+                  brand={product.brand}
+                  description={product.description}
+                  category={product.category}
+                  image={product.image}
+                  price={product.price}
+                />
+            </div>
           )
         )}
-    </>
+    </div>
+    </div>
   )
 }
