@@ -7,8 +7,8 @@ export default function Product() {
         <h2 className={styles['Product__brand']}> Dog Chow </h2>
         <p className={styles['Product__description']}>Cachorros 21kg</p>
 
-        <div className={styles['Product__etiquet-price']}>
-          <p className={styles['Product__etiquet-price__price']}>8.500</p>
+        <div className={styles['Product__etiquet']}>
+          <p className={styles['Product__etiquet__price']}>8.500</p>
           <div></div>
         </div>
         
