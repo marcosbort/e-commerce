@@ -37,8 +37,7 @@ a {
 .plan-card {
   position: relative;
   background: #fff;
-  /* width: 230px; */
-  min-width: 210px;
+  min-width: 220px;
   max-width: 300px;
   max-width: 240px;
   height: 420px;

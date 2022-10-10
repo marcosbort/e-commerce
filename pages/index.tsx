@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <meta name="description" content="e-commerce with Next.js and Typescript" />
         <link rel="icon" type="favicon/x-con" href="https://marcosbort.github.io/favicon-mb/favicon.png" />
       </Head>
-      <ProductContainer />
+      {/* <ProductContainer /> */}
       <Product />
     </>
   )
