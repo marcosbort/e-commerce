@@ -1,0 +1,26 @@
+$grid-column: 220px;
+$grid-gap: 20px;
+
+.ProductContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  &__product-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($grid-column, 1fr));
+    grid-auto-flow: row dense;
+    gap: $grid-gap;
+  }
+
+  &__title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  &__header {
+    width: 600px;
+    margin: auto;
+    display: block;
+    padding: 15px 0 25px;
+  }
+}

@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Product } from '../types'
+import { ProductType } from '../types'
+import styles from './ProductContainer.module.scss'
+import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
+import Image from 'next/image'
 
 export default function ProductContainer() {
-  const [products, setProducts] = useState<Product[]>()
+  const [products, setProducts] = useState<ProductType[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getProducts = useCallback(async () => {
@@ -14,7 +17,7 @@ export default function ProductContainer() {
     })
     Papa.parse(data, {
       header: true,
-      complete: (results) => setProducts(results.data as Product[]),
+      complete: (results) => setProducts(results.data as ProductType[]),
       error: (error) => error.message,
     })
     setIsLoading(false)
@@ -27,13 +30,28 @@ export default function ProductContainer() {
   }, [getProducts])
 
   return (
-    <>
+    <div className={styles['ProductContainer']}>
+      <img className={styles['ProductContainer__header']} src='https://marcosbort.github.io/server/images/pet-food/header-web-1.png' alt="foto" />
+    <div className={styles['ProductContainer__product-box']}>
       {isLoading
         ? (
-          <h2>Loading...</h2>
+          <h2 className={styles['ProductContainer__loading']}>Loading...</h2>
         ) : (
-          <h1>ProductContainer</h1>
+          products?.map((product, index) =>
+            <div key={product.id}>
+                <Product
+                  key={product.id}
+                  id={product.id}
+                  brand={product.brand}
+                  description={product.description}
+                  category={product.category}
+                  image={product.image}
+                  price={product.price}
+                />
+            </div>
+          )
         )}
-    </>
+    </div>
+    </div>
   )
 }
