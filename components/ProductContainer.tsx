@@ -4,6 +4,7 @@ import styles from './ProductContainer.module.scss'
 import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
+import Image from 'next/image'
 
 export default function ProductContainer() {
   const [products, setProducts] = useState<ProductType[]>()
@@ -30,7 +31,7 @@ export default function ProductContainer() {
 
   return (
     <div className={styles['ProductContainer']}>
-      <h2 className={styles['ProductContainer__title']}>Para Tus Amigos</h2>
+      <img className={styles['ProductContainer__header']} src='https://marcosbort.github.io/server/images/pet-food/header-web-1.png' alt="foto" />
     <div className={styles['ProductContainer__product-box']}>
       {isLoading
         ? (

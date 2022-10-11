@@ -16,4 +16,11 @@ $grid-gap: 20px;
     font-size: 30px;
     text-align: center;
   }
+
+  &__header {
+    width: 600px;
+    margin: auto;
+    display: block;
+    padding: 15px 0 25px;
+  }
 }
