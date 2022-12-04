@@ -15,10 +15,9 @@ export default function Product({id, brand, description, category, image, price}
         
         <div className={styles['Product__button-get']}>
           <a href="#" className={styles['Product__button-get__link']}>
-            <span>START PROJECT</span>
+            <span>COMPRAR</span>
           </a>
         </div>
-        {/* <img className="card-image" src="" alt="foto" /> */}
         <img className={styles['Product__image']} src={image} alt="foto" />
       </div>
     </>
