@@ -15,7 +15,7 @@ export default function Product({id, brand, description, category, image, price}
         
         <div className={styles['Product__button-get']}>
           <a href="#" className={styles['Product__button-get__link']}>
-            <span>COMPRAR</span>
+            <span>AGREGAR</span>
           </a>
         </div>
         <img className={styles['Product__image']} src={image} alt="foto" />

@@ -1,15 +1,18 @@
-$grid-column: 220px;
-$grid-gap: 20px;
+$grid-column: 210px;
+$column-gap: 24px;
+$row-gap: 20px;
 
 .ProductContainer {
   max-width: 1200px;
   margin: 0 auto;
-  
+  padding: 0 20px;
+
   &__product-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($grid-column, 1fr));
     grid-auto-flow: row dense;
-    gap: $grid-gap;
+    column-gap: $column-gap;
+    row-gap: $row-gap;
   }
 
   &__title {
@@ -21,6 +24,6 @@ $grid-gap: 20px;
     width: 580px;
     margin: auto;
     display: block;
-    padding: 20px 0 30px;
+    padding: 20px 0 50px;
   }
 }

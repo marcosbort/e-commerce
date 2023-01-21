@@ -5,6 +5,7 @@ import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
 import Image from 'next/image'
+import Spinner from './Spinner'
 
 export default function ProductContainer() {
   const [products, setProducts] = useState<ProductType[]>()
@@ -35,9 +36,9 @@ export default function ProductContainer() {
       <div className={styles['ProductContainer__product-box']}>
         {isLoading ? (
           <h2 className={styles['ProductContainer__loading']}>Loading...</h2>
-        ) : (
-          products?.map((product, index) => (
-            <div key={product.id}>
+          ) : (
+            products?.map((product) => (
+              <div key={product.id}>
               <Product
                 key={product.id}
                 id={product.id}
@@ -49,8 +50,9 @@ export default function ProductContainer() {
               />
             </div>
           ))
-        )}
+          )}
       </div>
+      <Spinner />
     </div>
   )
 }

@@ -2,9 +2,9 @@
 .Product {
   position: relative;
   background: #fff;
-  min-width: 220px;
-  max-width: 280px;
-  height: 420px;
+  min-width: 190px;
+  max-width: 250px;
+  height: 410px;
   padding: 10px 0 20px 0;
   border-radius: 10px;
   box-shadow: 0 6px 30px rgba(207, 212, 222, 0.3);
@@ -16,8 +16,7 @@
     object-fit: contain;
     object-fit: cover;
     object-position: center;
-    width: 98%;
-    width: 220px;
+    width: 214px;
     bottom: 7px;
     left: 50%;
     transform: translateX(-50%);
@@ -44,6 +43,7 @@
     position: absolute;
     background: #fdbd4a;
     width: 224px;
+    width: 218px;
     top: 126px;
     top: 300px;
     right: -13px;
