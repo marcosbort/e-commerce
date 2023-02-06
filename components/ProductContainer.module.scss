@@ -1,29 +1,68 @@
-$grid-column: 210px;
-$column-gap: 24px;
-$row-gap: 20px;
+$heightHeader: 134px;
+$wrap: 1240px;
+$gridColum: 220px;
+$columnGap: 25px;
+$rowGap: 20px;
 
 .ProductContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: calc($heightHeader + $rowGap);
+
+  &__header {
+    position: fixed;
+    width: 100%;
+    height: $heightHeader;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+
+    &__wrap {
+      position: relative;
+      max-width: $wrap;
+      height: $heightHeader;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    &__logo {
+      padding: 10px 0 15px;
+    }
+
+    &__btn-to-complete {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      letter-spacing: 0.2px;
+      font-size: 17px;
+      padding: 14px 14px;
+      border: transparent;
+      box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
+      background: #4d2559;
+      color: white;
+      border-radius: 6px;
+
+      &:hover {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+      }
+
+      &:active {
+        transform: translateY(calc(-50% - -2px));
+      }
+    }
+  }
 
   &__product-box {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($grid-column, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($gridColum, 1fr));
     grid-auto-flow: row dense;
-    column-gap: $column-gap;
-    row-gap: $row-gap;
-  }
-
-  &__title {
-    font-size: 30px;
-    text-align: center;
-  }
-
-  &__header {
-    width: 580px;
-    margin: auto;
-    display: block;
-    padding: 20px 0 50px;
+    column-gap: $columnGap;
+    row-gap: $rowGap;
+    width: $wrap;
+    padding: 0 20px;
   }
 }

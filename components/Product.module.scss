@@ -36,7 +36,7 @@
     font-size: 16px;
     font-weight: 400;
     margin: 3px 0 20px 26px;
-    z-index: 2;
+    z-index: 1;
   }
 
   &__etiquet {
@@ -79,39 +79,29 @@
     }
   }
 
-  &__button-get {
+  &__btn-get {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 100%;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+    font-size: 17px;
+    letter-spacing: 0.2px;
+    padding: 12px 24px;
+    border: transparent;
+    box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
+    background: #4d2559;
+    color: white;
+    border-radius: 6px;
 
-    &__link {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000446;
-      background: #fdbd4a;
-      background: #000446;
-      color: #fff;
-      padding: 10px 15px;
-      padding: 14px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.05rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      z-index: 2;
+    &:hover {
+      background: rgb(2, 0, 36);
+      background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+    }
 
-      &:hover {
-        transform: translateY(-3%);
-        box-shadow: 0 3px 10px rgba(207, 212, 222, 0.9);
-        z-index: 2;
-      }
+    &:active {
+      transform: translateX(-50%);
+      transform: translate(-50%, 2px);
     }
   }
 }

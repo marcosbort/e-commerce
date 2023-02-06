@@ -32,13 +32,21 @@ export default function ProductContainer() {
 
   return (
     <div className={styles['ProductContainer']}>
-      <img className={styles['ProductContainer__header']} src="https://marcosbort.github.io/server/images/pet-food/header-web-1.png" alt="foto" />
+      <div className={styles['ProductContainer__header']}>
+        <div className={styles['ProductContainer__header__wrap']}>
+          <img className={styles['ProductContainer__header__logo']} src="https://marcosbort.github.io/server/images/pet-food/header-web-1.png" alt="foto" />
+
+          <button className={styles['ProductContainer__header__btn-to-complete']}
+          > Completar Pedido</button>
+
+        </div>
+      </div>
       <div className={styles['ProductContainer__product-box']}>
         {isLoading ? (
           <h2 className={styles['ProductContainer__loading']}>Loading...</h2>
-          ) : (
-            products?.map((product) => (
-              <div key={product.id}>
+        ) : (
+          products?.map((product) => (
+            <div key={product.id}>
               <Product
                 key={product.id}
                 id={product.id}
@@ -50,7 +58,7 @@ export default function ProductContainer() {
               />
             </div>
           ))
-          )}
+        )}
       </div>
       <Spinner />
     </div>
