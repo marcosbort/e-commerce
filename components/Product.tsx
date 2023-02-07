@@ -12,8 +12,7 @@ export default function Product({ id, brand, description, category, image, price
           <div></div>
         </div>
         <img className={styles['Product__image']} src={image} alt="foto" />
-        <button className={styles['Product__btn-get']}
-        > Agregar </button>
+        <button className={styles['Product__btn-get']}> Agregar </button>
       </div>
     </>
   )

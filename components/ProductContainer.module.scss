@@ -1,5 +1,6 @@
-$heightHeader: 134px;
+$heightHeader: 124px;
 $wrap: 1240px;
+$wrapPadding: 20px;
 $gridColum: 220px;
 $columnGap: 25px;
 $rowGap: 20px;
@@ -8,6 +9,7 @@ $rowGap: 20px;
   display: flex;
   justify-content: center;
   padding-top: calc($heightHeader + $rowGap);
+  zoom: 0.92;
 
   &__header {
     position: fixed;
@@ -22,26 +24,25 @@ $rowGap: 20px;
       max-width: $wrap;
       height: $heightHeader;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       margin: 0 auto;
     }
 
     &__logo {
-      padding: 10px 0 15px;
+      height: 102px;
+      margin: 0 0 0 $wrapPadding;
+      transform: translateY(-4px);
     }
 
     &__btn-to-complete {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      letter-spacing: 0.2px;
-      font-size: 17px;
-      padding: 14px 14px;
+      margin: 0 $wrapPadding 0 0;
+      padding: 12px 16px 14px;
       border: transparent;
       box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
       background: #4d2559;
+      letter-spacing: 0.2px;
+      font-size: 16px;
       color: white;
       border-radius: 6px;
 
@@ -51,7 +52,15 @@ $rowGap: 20px;
       }
 
       &:active {
-        transform: translateY(calc(-50% - -2px));
+        transform: translateY(2px);
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        margin: 0 0 0 6px;
+        margin: 0 8px 0 0;
+        color: #03c100;
       }
     }
   }
@@ -63,6 +72,6 @@ $rowGap: 20px;
     column-gap: $columnGap;
     row-gap: $rowGap;
     width: $wrap;
-    padding: 0 20px;
+    padding: 0 $wrapPadding;
   }
 }

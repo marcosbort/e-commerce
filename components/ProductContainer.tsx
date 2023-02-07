@@ -4,12 +4,14 @@ import styles from './ProductContainer.module.scss'
 import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
-import Image from 'next/image'
 import Spinner from './Spinner'
+import { WhatsappIcon } from './Icons'
+import { getPetFood } from '../services/petFoodServices' // move getProducts to Services
 
 export default function ProductContainer() {
   const [products, setProducts] = useState<ProductType[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [cart, setCart] = useState<ProductType[]>([])
 
   const getProducts = useCallback(async () => {
     setIsLoading(true)
@@ -24,7 +26,12 @@ export default function ProductContainer() {
     setIsLoading(false)
   }, [])
 
-  console.log(products)
+  const addToCart = useCallback(() => {
+    // method to add to cart
+
+    // const changedCart = [currentProduct, ...cart]
+    // setCart(changedCart)
+  }, [])
 
   useEffect(() => {
     getProducts()
@@ -35,10 +42,10 @@ export default function ProductContainer() {
       <div className={styles['ProductContainer__header']}>
         <div className={styles['ProductContainer__header__wrap']}>
           <img className={styles['ProductContainer__header__logo']} src="https://marcosbort.github.io/server/images/pet-food/header-web-1.png" alt="foto" />
-
-          <button className={styles['ProductContainer__header__btn-to-complete']}
-          > Completar Pedido</button>
-
+          <button className={styles['ProductContainer__header__btn-to-complete']} >
+            <WhatsappIcon />
+            Completar Pedido
+          </button>
         </div>
       </div>
       <div className={styles['ProductContainer__product-box']}>
@@ -48,19 +55,18 @@ export default function ProductContainer() {
           products?.map((product) => (
             <div key={product.id}>
               <Product
-                key={product.id}
                 id={product.id}
                 brand={product.brand}
                 description={product.description}
                 category={product.category}
                 image={product.image}
                 price={product.price}
+              // addToCart={addToCart}
               />
             </div>
           ))
         )}
       </div>
-      <Spinner />
     </div>
   )
 }
