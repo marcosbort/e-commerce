@@ -9,7 +9,7 @@ import { WhatsappIcon } from './Icons'
 import { getPetFood } from '../services/petFoodServices' // move getProducts to Services
 
 export default function ProductContainer() {
-  const [products, setProducts] = useState<ProductType[]>()
+  const [products, setProducts] = useState<ProductType[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [cart, setCart] = useState<ProductType[]>([])
 
@@ -26,16 +26,28 @@ export default function ProductContainer() {
     setIsLoading(false)
   }, [])
 
-  const addToCart = useCallback(() => {
-    // method to add to cart
+  const handleAddToCart = useCallback((productId: string) => {
+    const product: ProductType = products?.filter((product) => product.id === productId)[0]
+    setCart(cart.concat(product))
+    sessionStorage.setItem('petFoodsCart', JSON.stringify(cart))
+  }, [products, cart])
 
-    // const changedCart = [currentProduct, ...cart]
-    // setCart(changedCart)
+  const handleResetCart = useCallback(() => {
+    // method to reset cart
+    setCart([])
   }, [])
 
   useEffect(() => {
     getProducts()
   }, [getProducts])
+
+  useEffect(() => {
+    const storageCart: ProductType[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart puede ser null
+    storageCart && setCart(storageCart)
+    console.log(storageCart) // inicia null
+  }, [])
+
+  console.log(cart)
 
   return (
     <div className={styles['ProductContainer']}>
@@ -45,6 +57,7 @@ export default function ProductContainer() {
           <button className={styles['ProductContainer__header__btn-to-complete']} >
             <WhatsappIcon />
             Completar Pedido
+            <span>{cart?.length}</span>
           </button>
         </div>
       </div>
@@ -55,13 +68,8 @@ export default function ProductContainer() {
           products?.map((product) => (
             <div key={product.id}>
               <Product
-                id={product.id}
-                brand={product.brand}
-                description={product.description}
-                category={product.category}
-                image={product.image}
-                price={product.price}
-              // addToCart={addToCart}
+                product={product}
+                onAddToCart={handleAddToCart}
               />
             </div>
           ))
@@ -70,3 +78,10 @@ export default function ProductContainer() {
     </div>
   )
 }
+
+/* Pending
+agregar icon de cart con el numero cart.length
+agregar modal con items de cart (detalle) y boton: vaciar carrito
+
+Precio: pasar de string a number: Number(product.price) (01:15)
+*/

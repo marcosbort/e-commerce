@@ -38,6 +38,7 @@ $rowGap: 20px;
     &__btn-to-complete {
       margin: 0 $wrapPadding 0 0;
       padding: 12px 16px 14px;
+      padding: 12px 16px 14px;
       border: transparent;
       box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
       background: #4d2559;
@@ -58,9 +59,14 @@ $rowGap: 20px;
       svg {
         width: 18px;
         height: 18px;
-        margin: 0 0 0 6px;
         margin: 0 8px 0 0;
+        transform: translate(0, 3px);
         color: #03c100;
+      }
+
+      // deletion pending
+      span {
+        margin: 0 0 0 5px;
       }
     }
   }
