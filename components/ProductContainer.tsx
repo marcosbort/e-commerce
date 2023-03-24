@@ -5,7 +5,7 @@ import Product from './Product'
 import Papa from 'papaparse'
 import axios from 'axios'
 import Spinner from './Spinner'
-import { WhatsappIcon } from './Icons'
+import { CartIcon, WhatsappIcon } from './Icons'
 import { getPetFood } from '../services/petFoodServices' // move getProducts to Services
 
 export default function ProductContainer() {
@@ -54,11 +54,16 @@ export default function ProductContainer() {
       <div className={styles['ProductContainer__header']}>
         <div className={styles['ProductContainer__header__wrap']}>
           <img className={styles['ProductContainer__header__logo']} src="https://marcosbort.github.io/server/images/pet-food/header-web-1.png" alt="foto" />
-          <button className={styles['ProductContainer__header__btn-to-complete']} >
-            <WhatsappIcon />
-            Completar Pedido
-            <span>{cart?.length}</span>
-          </button>
+          <div className={styles['ProductContainer__header__buttons']}>
+            <button className={styles['ProductContainer__header__buttons__btn-cart']} >
+              <CartIcon />
+              <span>{cart?.length}</span>
+            </button>
+            <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
+              <WhatsappIcon />
+              Completar Pedido
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles['ProductContainer__product-box']}>
@@ -80,8 +85,6 @@ export default function ProductContainer() {
 }
 
 /* Pending
-agregar icon de cart con el numero cart.length
 agregar modal con items de cart (detalle) y boton: vaciar carrito
-
 Precio: pasar de string a number: Number(product.price) (01:15)
 */
