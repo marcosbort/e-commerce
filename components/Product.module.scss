@@ -41,26 +41,30 @@
 
   &__etiquet {
     position: absolute;
+    display: flex;
+    align-items: center;
     background: #fdbd4a;
-    width: 224px;
     width: 218px;
-    top: 126px;
-    top: 300px;
+    width: 190px;
+    width: 224px;
+    height: 36px;
+    height: 42px;
+    top: 296px;
     right: -13px;
     border-radius: 5px 0 0 5px;
     z-index: 2;
 
     &__price {
-      margin: 0;
-      padding: 5px 0 4px 20px;
       display: flex;
+      align-items: center;
+      margin: 0 0 0 26px;
       font-size: 30px;
       font-size: 28px;
       font-weight: 500;
 
       &:before {
         content: '$';
-        margin: 5px 10px 4px;
+        margin: 0 8px 0 0;
         font-size: 20px;
         font-weight: 300;
       }
