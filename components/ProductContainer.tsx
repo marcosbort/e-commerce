@@ -104,7 +104,7 @@ export default function ProductContainer() {
   )
 }
 
-/* Pending
+/* Pending 
 agregar modal con items de cart (detalle) y boton: vaciar carrito
 Precio: pasar de string a number: Number(product.price) (01:15)
 
