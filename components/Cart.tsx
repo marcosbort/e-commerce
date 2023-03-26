@@ -1,5 +1,6 @@
 import { ProductType } from "../types";
 import styles from './Cart.module.scss'
+import { DeleteIcon } from "./Icons";
 
 interface Props {
   cart: ProductType[]
@@ -15,7 +16,7 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
 
         {cart.length === 0
           ? (
-            <h3 className={styles['Cart__message']}>No hay nada por aquí!!!</h3>
+            <h3 className={styles['Cart__message']}>Nada por aquí!!!</h3>
           ) : (
             <>
               {cart.map((product) => (
@@ -26,7 +27,8 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
                   <button
                     className={styles['Cart__details__btn-delete-product']}
                     onClick={() => onDeleteProduct(product.id)}
-                  > Quitar </button>
+                  // > Quitar </button>
+                  > <DeleteIcon /> </button>
                 </div>
               ))}
               <button

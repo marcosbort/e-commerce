@@ -38,6 +38,9 @@ export default function ProductContainer() {
   const handleDeleteProduct = useCallback((productId: string) => {
     const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
     setCart(newCart)
+    if (newCart.length === 0) {
+      setOpenCartModal(false)
+    }
   }, [cart])
 
   const handleResetCart = useCallback(() => {

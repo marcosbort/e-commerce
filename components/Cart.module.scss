@@ -1,3 +1,6 @@
+$mainColor: #4d2559;
+$secondaryColor: #fdbd4a;
+
 .Cart {
   display: flex;
   flex-direction: column;
@@ -47,22 +50,16 @@
       justify-content: center;
       align-items: center;
       height: 30px;
+      height: 20px;
       width: 68px;
-      padding: 0 14px;
+      width: 20px;
+      cursor: pointer;
       border: transparent;
-      background: #4d2559;
-      letter-spacing: 0.2px;
-      font-size: 16px;
-      color: white;
-      border-radius: 6px;
+      background: transparent;
 
-      &:hover {
-        background: rgb(2, 0, 36);
-        background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
-      }
-
-      &:active {
-        transform: translateY(2px);
+      svg {
+        scale: 1.5;
+        color: $mainColor;
       }
     }
   }
@@ -76,7 +73,7 @@
     margin: 10px 0 0 0;
     padding: 0 14px;
     border: transparent;
-    background: #4d2559;
+    background: $mainColor;
     letter-spacing: 0.2px;
     font-size: 16px;
     color: white;
@@ -84,7 +81,7 @@
 
     &:hover {
       background: rgb(2, 0, 36);
-      background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+      background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
     }
 
     &:active {

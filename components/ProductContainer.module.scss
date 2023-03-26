@@ -1,3 +1,5 @@
+$mainColor: #4d2559;
+$secondaryColor: #fdbd4a;
 $heightHeader: 124px;
 $wrap: 1240px;
 $wrapPadding: 20px;
@@ -47,7 +49,7 @@ $rowGap: 20px;
         margin: 0 $wrapPadding 0 0;
         padding: 0 14px;
         border: transparent;
-        background: #4d2559;
+        background: $mainColor;
         letter-spacing: 0.2px;
         font-size: 16px;
         color: white;
@@ -55,7 +57,7 @@ $rowGap: 20px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+          background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
         }
 
         &:active {
@@ -82,13 +84,13 @@ $rowGap: 20px;
         padding: 0 14px;
         font-size: 16px;
         color: white;
-        background: #fdbd4a;
+        background: $secondaryColor;
         border: transparent;
         border-radius: 6px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, #fdbd4a 0%, #ffcc6d 100%);
+          background: linear-gradient(90deg, $secondaryColor 0%, #ffcc6d 100%);
         }
 
         &:active {
@@ -103,7 +105,7 @@ $rowGap: 20px;
           width: 26px;
           height: 26px;
           margin: 0 8px 0 0;
-          color: #4d2559;
+          color: $mainColor;
           scale: 1.1;
         }
 
@@ -117,7 +119,7 @@ $rowGap: 20px;
           font-weight: 600;
           border-radius: 50px;
           background: #fff;
-          color: #4d2559;
+          color: $mainColor;
           padding: 1px 0 0 0;
         }
       }
