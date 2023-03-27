@@ -20,14 +20,13 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
           ) : (
             <>
               {cart.map((product) => (
-                <div key={product.id} className={styles['Cart__details']}>
+                <div key={Math.random()} className={styles['Cart__details']}>
                   <img className={styles['Cart__details__image']} src={product.image} alt={product.brand} />
                   <p className={styles['Cart__details__brand-and-description']}><span>{product.brand}</span> - {product.description}</p>
                   <p className={styles['Cart__details__price']}>$ {product.price}</p>
                   <button
                     className={styles['Cart__details__btn-delete-product']}
                     onClick={() => onDeleteProduct(product.id)}
-                  // > Quitar </button>
                   > <DeleteIcon /> </button>
                 </div>
               ))}

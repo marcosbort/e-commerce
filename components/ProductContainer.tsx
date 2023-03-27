@@ -30,12 +30,16 @@ export default function ProductContainer() {
   }, [])
 
   const handleAddToCart = useCallback((productId: string) => {
-    const product: ProductType = products?.filter((product) => product.id === productId)[0]
-    setCart(cart.concat(product))
+    const product: ProductType = products.filter((product) => product.id === productId)[0]
+    setCart([
+      ...cart,
+      product
+    ])
     sessionStorage.setItem('petFoodsCart', JSON.stringify(cart))
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
+    // const newCart: ProductType[] = cart.splice(cart.findIndex(element => element.id === productId), 1)
     const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
     setCart(newCart)
     if (newCart.length === 0) {
@@ -108,14 +112,17 @@ export default function ProductContainer() {
 }
 
 /* Pending 
-agregar modal con items de cart (detalle) y boton: vaciar carrito
+fix sessionStorage (does not add the last product)
+
 Precio: pasar de string a number: Number(product.price) (01:15)
 
-(mejorar handleDeleteProduct()) // No se elimina cuando el producto esta repetido
+(mejorar handleDeleteProduct()) (los productos repetidos se eliminan juntos)
 
 Modal Documentation:
 https://www.deca-ui.com/docs/components/modal
 
 URL Google Sheets (public)
 https://docs.google.com/spreadsheets/d/1W9My3EjZTrkJpLdsWbCo0x1q9vxkUdtzglCAVFQ5ulk/edit?usp=sharing
+
+setCart(cart.concat(product))
 */
