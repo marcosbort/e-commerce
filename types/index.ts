@@ -5,5 +5,5 @@ export type ProductType = {
   category?: string
   image: string
   price: number
-  units?: number
+  units?: number | undefined
 }

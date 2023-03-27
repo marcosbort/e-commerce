@@ -31,17 +31,19 @@ export default function ProductContainer() {
 
   const handleAddToCart = useCallback((productId: string) => {
     const product: ProductType = products.filter((product) => product.id === productId)[0]
-    setCart([
-      ...cart,
-      product
-    ])
-    sessionStorage.setItem('petFoodsCart', JSON.stringify(cart))
+    const productWithUnits = { ...product, units: 1 }
+    const newCart: ProductType[] = [...cart, productWithUnits]
+    setCart(newCart)
+    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
-    // const newCart: ProductType[] = cart.splice(cart.findIndex(element => element.id === productId), 1)
+    // const product: ProductType = cart.filter((product) => product.id === productId)[0]
+    // console.log(product)
+    // const newCart: ProductType[] = cart.splice(cart.findIndex(element => element.id === productId), 1) // reemplazar .splice()
     const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
     setCart(newCart)
+    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     if (newCart.length === 0) {
       setOpenCartModal(false)
     }
@@ -74,7 +76,7 @@ export default function ProductContainer() {
               onClick={() => setOpenCartModal(true)}
             >
               <CartIcon />
-              <span>{cart?.length}</span>
+              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span>
             </button>
             <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
               <WhatsappIcon />
@@ -111,8 +113,9 @@ export default function ProductContainer() {
   )
 }
 
-/* Pending 
-fix sessionStorage (does not add the last product)
+/* Pending
+
+Pro: cambiar cart.length por un reduce(cart.units) (total de unidades)
 
 Precio: pasar de string a number: Number(product.price) (01:15)
 
