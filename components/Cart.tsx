@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
-
   return (
     <>
       <div className={styles['Cart']}>
@@ -18,8 +17,8 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
             <h3 className={styles['Cart__message']}>Nada por aquí!!!</h3>
           ) : (
             <>
-              {cart.map((product) => (
-                <div key={Math.random()} className={styles['Cart__details']}>
+              {cart.map((product, i) => (
+                <div key={i} className={styles['Cart__details']}>
                   <img className={styles['Cart__details__image']} src={product.image} alt={product.brand} />
                   <p className={styles['Cart__details__brand-and-description']}><span>{product.brand}</span> - {product.description}</p>
                   <p className={styles['Cart__details__price']}>$ {product.price}</p>

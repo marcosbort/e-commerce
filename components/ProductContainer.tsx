@@ -73,7 +73,7 @@ export default function ProductContainer() {
               onClick={() => setOpenCartModal(true)}
             >
               <CartIcon />
-              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span>
+              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span> {/* suma product.units de los product de Cart */}
             </button>
             <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
               <WhatsappIcon />
@@ -109,4 +109,3 @@ export default function ProductContainer() {
     </div>
   )
 }
-
