@@ -1,3 +1,5 @@
+import './Spinner.module.scss'
+
 export default function Spinner() {
   return (
     <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster">

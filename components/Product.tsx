@@ -1,18 +1,24 @@
 import { ProductType } from '../types'
 import styles from './Product.module.scss'
 
-export default function Product({ id, brand, description, category, image, price }: ProductType) {
+interface Props {
+  product: ProductType
+  onAddToCart: (productId: string) => void
+}
+
+export default function Product({ product, onAddToCart }: Props) {
   return (
     <>
       <div className={styles['Product']}>
-        <h2 className={styles['Product__brand']}> {brand} </h2>
-        <p className={styles['Product__description']}> {description} </p>
+        <h2 className={styles['Product__brand']}> {product.brand} </h2>
+        <p className={styles['Product__description']}> {product.description} </p>
         <div className={styles['Product__etiquet']}>
-          <p className={styles['Product__etiquet__price']}>{price}</p>
+          <p className={styles['Product__etiquet__price']}>{product.price}</p>
           <div></div>
         </div>
-        <img className={styles['Product__image']} src={image} alt="foto" />
+        <img className={styles['Product__image']} src={product.image} alt="foto" />
         <button className={styles['Product__btn-get']}
+          onClick={() => onAddToCart(product.id)}
         > Agregar </button>
       </div>
     </>

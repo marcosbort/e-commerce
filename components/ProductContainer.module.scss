@@ -1,5 +1,8 @@
-$heightHeader: 134px;
+$mainColor: #4d2559;
+$secondaryColor: #fdbd4a;
+$heightHeader: 124px;
 $wrap: 1240px;
+$wrapPadding: 20px;
 $gridColum: 220px;
 $columnGap: 25px;
 $rowGap: 20px;
@@ -8,13 +11,14 @@ $rowGap: 20px;
   display: flex;
   justify-content: center;
   padding-top: calc($heightHeader + $rowGap);
+  zoom: 0.9;
 
   &__header {
     position: fixed;
     width: 100%;
     height: $heightHeader;
     top: 0;
-    background-color: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
     z-index: 2;
 
     &__wrap {
@@ -22,36 +26,102 @@ $rowGap: 20px;
       max-width: $wrap;
       height: $heightHeader;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       margin: 0 auto;
     }
 
     &__logo {
-      padding: 10px 0 15px;
+      height: 102px;
+      margin: 0 0 0 $wrapPadding;
+      transform: translateY(-4px);
     }
 
-    &__btn-to-complete {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      letter-spacing: 0.2px;
-      font-size: 17px;
-      padding: 14px 14px;
-      border: transparent;
-      box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
-      background: #4d2559;
-      color: white;
-      border-radius: 6px;
+    &__buttons {
+      display: flex;
 
-      &:hover {
-        background: rgb(2, 0, 36);
-        background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+      &__btn-to-complete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 200px;
+        margin: 0 $wrapPadding 0 0;
+        padding: 0 14px;
+        border: transparent;
+        background: $mainColor;
+        letter-spacing: 0.2px;
+        font-size: 16px;
+        color: white;
+        border-radius: 6px;
+
+        &:hover {
+          background: rgb(2, 0, 36);
+          background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+
+        svg {
+          width: 18px;
+          height: 18px;
+          margin: 0 11px 0 0;
+          color: #fff;
+          // color: #03c100;
+          scale: 1.25;
+        }
       }
 
-      &:active {
-        transform: translateY(calc(-50% - -2px));
+      &__btn-cart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 96px;
+        height: 48px;
+        margin: 0 14px 0 0;
+        padding: 0 14px;
+        font-size: 16px;
+        color: white;
+        background: $secondaryColor;
+        border: transparent;
+        border-radius: 6px;
+
+        &:hover {
+          background: rgb(2, 0, 36);
+          background: linear-gradient(90deg, $secondaryColor 0%, #ffcc6d 100%);
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+
+        &:disabled {
+          background: rgba(253, 190, 74, 0.6);
+        }
+
+        svg {
+          width: 26px;
+          height: 26px;
+          margin: 0 8px 0 0;
+          color: $mainColor;
+          scale: 1.1;
+        }
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          font-size: 17px;
+          font-weight: 600;
+          border-radius: 50px;
+          background: #fff;
+          color: $mainColor;
+          padding: 1px 0 0 0;
+        }
       }
     }
   }
@@ -63,6 +133,6 @@ $rowGap: 20px;
     column-gap: $columnGap;
     row-gap: $rowGap;
     width: $wrap;
-    padding: 0 20px;
+    padding: 0 $wrapPadding;
   }
 }

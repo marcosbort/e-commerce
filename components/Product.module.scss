@@ -1,4 +1,6 @@
-/* Product.module.scss */
+$mainColor: #4d2559;
+$secondaryColor: #fdbd4a;
+
 .Product {
   position: relative;
   background: #fff;
@@ -41,26 +43,29 @@
 
   &__etiquet {
     position: absolute;
-    background: #fdbd4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $secondaryColor;
     width: 224px;
-    width: 218px;
-    top: 126px;
-    top: 300px;
+    height: 42px;
+    top: 296px;
     right: -13px;
     border-radius: 5px 0 0 5px;
     z-index: 2;
 
     &__price {
-      margin: 0;
-      padding: 5px 0 4px 20px;
       display: flex;
+      align-items: center;
+
+      margin: 0 30px 0 0px;
       font-size: 30px;
       font-size: 28px;
       font-weight: 500;
 
       &:before {
         content: '$';
-        margin: 4px 10px 4px;
+        margin: 0 8px 0 0;
         font-size: 20px;
         font-weight: 300;
       }
@@ -90,13 +95,13 @@
     padding: 12px 24px;
     border: transparent;
     box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
-    background: #4d2559;
+    background: $mainColor;
     color: white;
     border-radius: 6px;
 
     &:hover {
       background: rgb(2, 0, 36);
-      background: linear-gradient(90deg, #4d2559 0%, #824f92 100%);
+      background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
     }
 
     &:active {
