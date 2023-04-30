@@ -13,7 +13,6 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
   return (
     <>
       <div className={styles['Cart']}>
-
         {cart.length === 0
           ? (
             <h3 className={styles['Cart__message']}>Nada por aquí!!!</h3>

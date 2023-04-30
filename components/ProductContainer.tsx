@@ -38,9 +38,6 @@ export default function ProductContainer() {
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
-    // const product: ProductType = cart.filter((product) => product.id === productId)[0]
-    // console.log(product)
-    // const newCart: ProductType[] = cart.splice(cart.findIndex(element => element.id === productId), 1) // reemplazar .splice()
     const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
     setCart(newCart)
     sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
@@ -115,11 +112,14 @@ export default function ProductContainer() {
 
 /* Pending
 
-Pro: cambiar cart.length por un reduce(cart.units) (total de unidades)
-
 Precio: pasar de string a number: Number(product.price) (01:15)
 
 (mejorar handleDeleteProduct()) (los productos repetidos se eliminan juntos)
+
+agregar en el mapeo de cart 'x1' (X: product.units)
+
+cuando se agregue un producto, antes comprobar si ya esta en cart.
+si cumple la condición de que ya está en cart, no agregar el producto, sino sumarle al que está: product.units: +1
 
 Modal Documentation:
 https://www.deca-ui.com/docs/components/modal
