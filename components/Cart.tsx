@@ -39,12 +39,3 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
     </>
   )
 }
-
-/* Pending
-
-crear algoritmo para agrupar los repetidos
-add propertie product.units 'x1' o 'x8' etc. 
-add total
-add delete (individual) Y que la useCallback escuche 'cart'
-
-*/

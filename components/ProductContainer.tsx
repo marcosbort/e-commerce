@@ -110,22 +110,3 @@ export default function ProductContainer() {
   )
 }
 
-/* Pending
-
-Precio: pasar de string a number: Number(product.price) (01:15)
-
-(mejorar handleDeleteProduct()) (los productos repetidos se eliminan juntos)
-
-agregar en el mapeo de cart 'x1' (X: product.units)
-
-cuando se agregue un producto, antes comprobar si ya esta en cart.
-si cumple la condición de que ya está en cart, no agregar el producto, sino sumarle al que está: product.units: +1
-
-Modal Documentation:
-https://www.deca-ui.com/docs/components/modal
-
-URL Google Sheets (public)
-https://docs.google.com/spreadsheets/d/1W9My3EjZTrkJpLdsWbCo0x1q9vxkUdtzglCAVFQ5ulk/edit?usp=sharing
-
-setCart(cart.concat(product))
-*/
