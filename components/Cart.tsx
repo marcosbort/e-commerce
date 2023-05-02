@@ -32,9 +32,11 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
                 className={styles['Cart__btn-reset-cart']}
                 onClick={() => onResetCart()}
               > Vaciar carrito </button>
+              {/* <p>{cart.reduce((total, product) => total + product.price)}</p> */}
             </>
           )}
       </div>
     </>
   )
 }
+//	.reduce((acumulator, element) operation, valorInialDelAcumulador)

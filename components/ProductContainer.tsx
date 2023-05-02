@@ -15,6 +15,7 @@ export default function ProductContainer() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [cart, setCart] = useState<ProductType[]>([])
   const [openCartModal, setOpenCartModal] = useState<boolean>(false)
+  const orderText = cart.reduce((message, product) => message.concat(''), '')
 
   const getProducts = useCallback(async () => {
     setIsLoading(true)
@@ -28,13 +29,46 @@ export default function ProductContainer() {
     })
     setIsLoading(false)
   }, [])
+  // Con precios en numeros:
+  // const getProducts = useCallback(async () => {
+  //   setIsLoading(true)
+  //   const { data } = await axios.get(
+  //     'https://docs.google.com/spreadsheets/d/e/2PACX-1vQh35kh4HEg8CJd044vWDVgGa3laneMWv-1BxiG2xI09MByo4LEAdGxPpraA5wTbZw9CvJcDTb806vZ/pub?output=csv', { responseType: 'blob', }
+  //   )
+  //   Papa.parse(data, {
+  //     header: true,
+  //     complete: (results) => {
+  //       const stringProducts = results.data as ProductType[]
+  //       const productsWithNumberPrice = stringProducts.map((product) => ...product, price: Number(product.price)) // ver error
+  //       return setProducts(productsWithNumberPrice)
+  //     },
+  //     error: (error) => error.message,
+  //   })
+  //   setIsLoading(false)
+  // }, [])
 
+
+
+  // handleAddToCart Original:
+  // const handleAddToCart = useCallback((productId: string) => {
+  //   const product: ProductType = products.filter((product) => product.id === productId)[0]
+  //   const productWithUnits = { ...product, units: 1 }
+  //   const newCart: ProductType[] = [...cart, productWithUnits]
+  //   setCart(newCart)
+  //   sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+  // }, [products, cart])
   const handleAddToCart = useCallback((productId: string) => {
     const product: ProductType = products.filter((product) => product.id === productId)[0]
-    const productWithUnits = { ...product, units: 1 }
-    const newCart: ProductType[] = [...cart, productWithUnits]
-    setCart(newCart)
-    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    if (cart.includes(product)) {
+      const newCart = cart.map((el) => el.id === productId ? el.units && { ...el, units: el.units + 1 } : { ...el })
+      setCart(newCart as ProductType[])
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    } else {
+      const productWithUnits = { ...product, units: 1 }
+      const newCart: ProductType[] = [...cart, productWithUnits]
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    }
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
@@ -75,10 +109,12 @@ export default function ProductContainer() {
               <CartIcon />
               <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span> {/* suma product.units de los product de Cart */}
             </button>
-            <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
-              <WhatsappIcon />
-              Completar Pedido
-            </button>
+            <a href={`http://wa.me/1122222222?text=${encodeURIComponent(orderText)}`} target='_blank' rel='noreferrer'  >
+              <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
+                <WhatsappIcon />
+                Completar Pedido
+              </button>
+            </a>
           </div>
         </div>
       </div>
