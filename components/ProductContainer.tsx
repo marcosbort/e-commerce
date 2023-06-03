@@ -24,30 +24,17 @@ export default function ProductContainer() {
     )
     Papa.parse(data, {
       header: true,
-      complete: (results) => setProducts(results.data as ProductType[]),
+      complete: (results) => {
+        const stringProducts = results.data as ProductType[]
+        const productsWithNumberPrice = stringProducts.map((product) => ({ ...product, price: Number(product.price) }))
+        return setProducts(productsWithNumberPrice)
+      },
       error: (error) => error.message,
     })
     setIsLoading(false)
   }, [])
-  // Con precios en numeros:
-  // const getProducts = useCallback(async () => {
-  //   setIsLoading(true)
-  //   const { data } = await axios.get(
-  //     'https://docs.google.com/spreadsheets/d/e/2PACX-1vQh35kh4HEg8CJd044vWDVgGa3laneMWv-1BxiG2xI09MByo4LEAdGxPpraA5wTbZw9CvJcDTb806vZ/pub?output=csv', { responseType: 'blob', }
-  //   )
-  //   Papa.parse(data, {
-  //     header: true,
-  //     complete: (results) => {
-  //       const stringProducts = results.data as ProductType[]
-  //       const productsWithNumberPrice = stringProducts.map((product) => ...product, price: Number(product.price)) // ver error
-  //       return setProducts(productsWithNumberPrice)
-  //     },
-  //     error: (error) => error.message,
-  //   })
-  //   setIsLoading(false)
-  // }, [])
 
-
+  console.log('Products:', products)
 
   // handleAddToCart Original:
   // const handleAddToCart = useCallback((productId: string) => {
@@ -57,10 +44,16 @@ export default function ProductContainer() {
   //   setCart(newCart)
   //   sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
   // }, [products, cart])
+
   const handleAddToCart = useCallback((productId: string) => {
     const product: ProductType = products.filter((product) => product.id === productId)[0]
-    if (cart.includes(product)) {
-      const newCart = cart.map((el) => el.id === productId ? el.units && { ...el, units: el.units + 1 } : { ...el })
+    console.log('Included product:', cart.includes(product))
+    if (cart.includes(product)) { // error is here (si lo incluye da false)
+      const newCart = cart.map((product) => (
+        product.units && product.id === productId
+          ? { ...product, units: product.units++ }
+          : { ...product }
+      ))
       setCart(newCart as ProductType[])
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     } else {
@@ -95,7 +88,7 @@ export default function ProductContainer() {
     console.log(storageCart) // inicia null
   }, [])
 
-  console.log(cart)
+  console.log('Cart:', cart)
 
   return (
     <div className={styles['ProductContainer']}>

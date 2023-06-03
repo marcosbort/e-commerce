@@ -41,6 +41,10 @@ $secondaryColor: #fdbd4a;
       }
     }
 
+    &__units {
+      width: 50px;
+    }
+
     &__price {
       width: 70px;
     }
@@ -64,13 +68,28 @@ $secondaryColor: #fdbd4a;
     }
   }
 
+  &__footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 0 0;
+    padding: 0 10px 0 calc((100% - 134px) / 2);
+    width: 100%;
+  }
+
+  &__total {
+    color: $mainColor;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
   &__btn-reset-cart {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
     width: 134px;
-    margin: 10px 0 0 0;
     padding: 0 14px;
     border: transparent;
     background: $mainColor;
