@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { ProductType } from '../types'
+import { Product } from '../types'
 import styles from './ProductContainer.module.scss'
-import Product from './Product'
+import ProductCard from './ProductCard'
 import Papa from 'papaparse'
 import axios from 'axios'
 import Spinner from './Spinner'
@@ -11,9 +11,9 @@ import { Modal, Text, Button } from "@deca-ui/react"
 import Cart from './Cart'
 
 export default function ProductContainer() {
-  const [products, setProducts] = useState<ProductType[]>([])
+  const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [cart, setCart] = useState<ProductType[]>([])
+  const [cart, setCart] = useState<Product[]>([])
   const [openCartModal, setOpenCartModal] = useState<boolean>(false)
   const orderText = cart.reduce((message, product) => message.concat(''), '')
 
@@ -25,7 +25,7 @@ export default function ProductContainer() {
     Papa.parse(data, {
       header: true,
       complete: (results) => {
-        const stringProducts = results.data as ProductType[]
+        const stringProducts = results.data as Product[]
         const productsWithNumberPrice = stringProducts.map((product) => ({ ...product, price: Number(product.price) }))
         return setProducts(productsWithNumberPrice)
       },
@@ -41,12 +41,12 @@ export default function ProductContainer() {
           ? { ...product, units: product.units + 1 }
           : { ...product }
       )
-      setCart(newCart as ProductType[])
+      setCart(newCart as Product[])
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     } else {
-      const product: ProductType = products.filter((product) => product.id === productId)[0]
+      const product: Product = products.filter((product) => product.id === productId)[0]
       const productWithUnits = { ...product, units: 1 }
-      const newCart: ProductType[] = [...cart, productWithUnits]
+      const newCart: Product[] = [...cart, productWithUnits]
       setCart(newCart)
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     }
@@ -54,7 +54,7 @@ export default function ProductContainer() {
 
   const handleDeleteProduct = useCallback((productId: string) => {
     if (cart.filter((product) => product.id === productId)[0].units > 1) {
-      const newCart: ProductType[] = cart.map((product) =>
+      const newCart: Product[] = cart.map((product) =>
         product.id === productId
           ? { ...product, units: product.units - 1 }
           : { ...product }
@@ -62,7 +62,7 @@ export default function ProductContainer() {
       setCart(newCart)
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     } else {
-      const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
+      const newCart: Product[] = cart.filter((product) => product.id !== productId)
       setCart(newCart)
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
       if (newCart.length === 0) {
@@ -74,6 +74,7 @@ export default function ProductContainer() {
   const handleResetCart = useCallback(() => {
     setCart([])
     setOpenCartModal(false)
+    sessionStorage.setItem('petFoodsCart', JSON.stringify([]))
   }, [])
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function ProductContainer() {
   }, [getProducts])
 
   useEffect(() => {
-    const storageCart: ProductType[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart can be null
+    const storageCart: Product[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart can be null
     storageCart && setCart(storageCart)
     console.log(storageCart) // inicia null
   }, [])
@@ -99,7 +100,7 @@ export default function ProductContainer() {
               onClick={() => setOpenCartModal(true)}
             >
               <CartIcon />
-              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span>
+              <span>{cart.length > 0 ? cart.reduce((count, product: Product) => count + product.units, 0) : 0}</span>
             </button>
             <a href={`http://wa.me/1122222222?text=${encodeURIComponent(orderText)}`} target='_blank' rel='noreferrer'  >
               <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
@@ -116,8 +117,9 @@ export default function ProductContainer() {
         ) : (
           products?.map((product) => (
             <div key={product.id}>
-              <Product
+              <ProductCard
                 product={product}
+                cart={cart}
                 onAddToCart={handleAddToCart}
               />
             </div>

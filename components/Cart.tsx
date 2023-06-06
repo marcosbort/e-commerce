@@ -1,9 +1,9 @@
-import { ProductType } from "../types";
+import { Product } from "../types";
 import styles from './Cart.module.scss'
 import { DeleteIcon } from "./Icons";
 
 interface Props {
-  cart: ProductType[]
+  cart: Product[]
   onDeleteProduct: (productId: string) => void
   onResetCart: () => void
 }
@@ -35,7 +35,7 @@ export default function Cart({ cart, onDeleteProduct, onResetCart, }: Props) {
                   onClick={() => onResetCart()}
                 > Vaciar carrito </button>
                 <p className={styles['Cart__total']}>
-                  Total: $ {cart.reduce((count, product: ProductType) => count + (product.price * product.units), 0)}
+                  Total: $ {cart.reduce((count, product: Product) => count + (product.price * product.units), 0)}
                 </p>
               </div>
             </>

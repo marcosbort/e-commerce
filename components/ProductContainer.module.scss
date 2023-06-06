@@ -82,7 +82,6 @@ $rowGap: 20px;
         height: 48px;
         margin: 0 14px 0 0;
         padding: 0 14px;
-        font-size: 16px;
         color: white;
         background: $secondaryColor;
         border: transparent;
@@ -113,14 +112,14 @@ $rowGap: 20px;
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 30px;
-          height: 30px;
-          font-size: 17px;
+          width: 32px;
+          height: 32px;
+          font-size: 19px;
           font-weight: 600;
           border-radius: 50px;
           background: #fff;
           color: $mainColor;
-          padding: 1px 0 0 0;
+          padding: 2px 0 0 0;
         }
       }
     }

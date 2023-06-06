@@ -1,12 +1,12 @@
 $mainColor: #4d2559;
 $secondaryColor: #fdbd4a;
 
-.Product {
+.ProductCard {
   position: relative;
   background: #fff;
   min-width: 190px;
   max-width: 250px;
-  height: 410px;
+  height: 396px;
   padding: 10px 0 20px 0;
   border-radius: 10px;
   box-shadow: 0 6px 30px rgba(207, 212, 222, 0.3);
@@ -15,18 +15,17 @@ $secondaryColor: #fdbd4a;
 
   &__image {
     position: absolute;
-    object-fit: contain;
     object-fit: cover;
     object-position: center;
-    width: 214px;
-    bottom: 7px;
+    width: 210px;
+    bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
   }
 
   &__brand {
-    margin: 10px 0 0 26px;
+    margin: 6px 0 0 26px;
     font-size: 27px;
     font-weight: 600;
     z-index: 2;
@@ -34,11 +33,35 @@ $secondaryColor: #fdbd4a;
 
   &__description {
     display: block;
-    color: #4d4d4d;
-    font-size: 16px;
+    color: $mainColor;
+    font-size: 17px;
     font-weight: 400;
-    margin: 3px 0 20px 26px;
+    margin: 2px 0 20px 26px;
     z-index: 1;
+  }
+
+  &__units {
+    display: inline;
+    position: absolute;
+    top: 67px;
+    right: 23px;
+    margin: 3px 0 20px 26px;
+    margin: 3px 0 20px 26px;
+    z-index: 4;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      font-size: 19px;
+      font-weight: 600;
+      border-radius: 50px;
+      background: $secondaryColor;
+      color: $mainColor;
+      padding: 1px 0 0 0;
+    }
   }
 
   &__etiquet {
@@ -49,7 +72,7 @@ $secondaryColor: #fdbd4a;
     background: $secondaryColor;
     width: 224px;
     height: 42px;
-    top: 296px;
+    top: 284px;
     right: -13px;
     border-radius: 5px 0 0 5px;
     z-index: 2;
@@ -57,9 +80,7 @@ $secondaryColor: #fdbd4a;
     &__price {
       display: flex;
       align-items: center;
-
-      margin: 0 30px 0 0px;
-      font-size: 30px;
+      margin: 0 32px 0 0px;
       font-size: 28px;
       font-weight: 500;
 
@@ -73,7 +94,7 @@ $secondaryColor: #fdbd4a;
 
     & div {
       position: absolute;
-      bottom: -23px;
+      bottom: -22px;
       right: 0;
       width: 0;
       height: 0;
@@ -100,12 +121,10 @@ $secondaryColor: #fdbd4a;
     border-radius: 6px;
 
     &:hover {
-      background: rgb(2, 0, 36);
       background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
     }
 
     &:active {
-      transform: translateX(-50%);
       transform: translate(-50%, 2px);
     }
   }

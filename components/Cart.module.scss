@@ -62,7 +62,7 @@ $secondaryColor: #fdbd4a;
       background: transparent;
 
       svg {
-        scale: 1.5;
+        scale: 1.4;
         color: $mainColor;
       }
     }
@@ -88,13 +88,12 @@ $secondaryColor: #fdbd4a;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 134px;
-    padding: 0 14px;
+    height: 36px;
+    width: 120px;
     border: transparent;
     background: $mainColor;
     letter-spacing: 0.2px;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     border-radius: 6px;
 
