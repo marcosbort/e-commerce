@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;600;700;800;900&family=Bebas+Neue&family=Great+Vibes&family=Lobster&family=Montserrat:wght@500;600;700;800&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap');
+
 $mainColor: #4d2559;
 $secondaryColor: #fdbd4a;
-$heightHeader: 124px;
+$heightHeader: 112px;
 $wrap: 1240px;
-$wrapPadding: 20px;
-$gridColum: 220px;
-$columnGap: 25px;
-$rowGap: 20px;
+$wrap: 1116px;
+$wrapPadding: 18px;
+$gridColum: 198px;
+$columnGap: 22px;
+$rowGap: 18px;
 
 .ProductContainer {
   display: flex;
   justify-content: center;
   padding-top: calc($heightHeader + $rowGap);
-  zoom: 0.9;
+  font-family: 'Roboto', sans-serif;
 
   &__header {
     position: fixed;
@@ -33,6 +36,7 @@ $rowGap: 20px;
 
     &__logo {
       height: 102px;
+      height: 92px;
       margin: 0 0 0 $wrapPadding;
       transform: translateY(-4px);
     }
@@ -44,14 +48,15 @@ $rowGap: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 48px;
-        width: 200px;
+        height: 43px;
+        width: 190px;
         margin: 0 $wrapPadding 0 0;
-        padding: 0 14px;
+        padding: 0 12px;
         border: transparent;
         background: $mainColor;
-        letter-spacing: 0.2px;
         font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 0.2px;
         color: white;
         border-radius: 6px;
 
@@ -65,12 +70,11 @@ $rowGap: 20px;
         }
 
         svg {
-          width: 18px;
-          height: 18px;
-          margin: 0 11px 0 0;
+          width: 16px;
+          height: 16px;
+          margin: 0 10px 0 0;
           color: #fff;
-          // color: #03c100;
-          scale: 1.25;
+          scale: 1.2;
         }
       }
 
@@ -78,10 +82,13 @@ $rowGap: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 96px;
-        height: 48px;
-        margin: 0 14px 0 0;
-        padding: 0 14px;
+        width: 86px;
+        height: 43px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0 12px 0 0;
+        padding: 0 11px;
         color: white;
         background: $secondaryColor;
         border: transparent;
@@ -101,9 +108,9 @@ $rowGap: 20px;
         }
 
         svg {
-          width: 26px;
-          height: 26px;
-          margin: 0 8px 0 0;
+          width: 23px;
+          height: 23px;
+          margin: 0 7px 0 0;
           color: $mainColor;
           scale: 1.1;
         }
@@ -112,14 +119,12 @@ $rowGap: 20px;
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 32px;
-          height: 32px;
-          font-size: 19px;
-          font-weight: 600;
+          width: 29px;
+          height: 29px;
           border-radius: 50px;
           background: #fff;
           color: $mainColor;
-          padding: 2px 0 0 0;
+          padding: 1px 0 0 0;
         }
       }
     }

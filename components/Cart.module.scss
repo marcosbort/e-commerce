@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;600;700;800;900&family=Bebas+Neue&family=Great+Vibes&family=Lobster&family=Montserrat:wght@500;600;700;800&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap');
+
 $mainColor: #4d2559;
 $secondaryColor: #fdbd4a;
 
@@ -7,6 +9,9 @@ $secondaryColor: #fdbd4a;
   align-items: center;
   margin: 30px;
   gap: 6px;
+  font-size: 17px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 
   &__message {
     margin: 0 0 24px 0;
@@ -46,6 +51,8 @@ $secondaryColor: #fdbd4a;
     }
 
     &__price {
+      display: flex;
+      justify-content: flex-end;
       width: 70px;
     }
 
@@ -53,10 +60,9 @@ $secondaryColor: #fdbd4a;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 30px;
       height: 20px;
-      width: 68px;
       width: 20px;
+      margin: 0 12px;
       cursor: pointer;
       border: transparent;
       background: transparent;
@@ -74,7 +80,7 @@ $secondaryColor: #fdbd4a;
     justify-content: space-between;
     align-items: center;
     margin: 10px 0 0 0;
-    padding: 0 10px 0 calc((100% - 134px) / 2);
+    padding: 0 10px 0 calc((100% - 120px) / 2);
     width: 100%;
   }
 
@@ -82,6 +88,7 @@ $secondaryColor: #fdbd4a;
     color: $mainColor;
     font-size: 17px;
     font-weight: 600;
+    letter-spacing: 0.2px;
   }
 
   &__btn-reset-cart {
@@ -90,10 +97,11 @@ $secondaryColor: #fdbd4a;
     align-items: center;
     height: 36px;
     width: 120px;
+    font-family: 'Roboto', sans-serif;
     border: transparent;
     background: $mainColor;
     letter-spacing: 0.2px;
-    font-size: 14px;
+    font-size: 15px;
     color: white;
     border-radius: 6px;
 

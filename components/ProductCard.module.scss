@@ -1,23 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;600;700;800;900&family=Bebas+Neue&family=Great+Vibes&family=Lobster&family=Montserrat:wght@500;600;700;800&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap');
+
 $mainColor: #4d2559;
 $secondaryColor: #fdbd4a;
 
 .ProductCard {
   position: relative;
   background: #fff;
-  min-width: 190px;
-  max-width: 250px;
-  height: 396px;
-  padding: 10px 0 20px 0;
-  border-radius: 10px;
-  box-shadow: 0 6px 30px rgba(207, 212, 222, 0.3);
-  font-family: 'Poppins', sans-serif;
+  min-width: 170px;
+  max-width: 225px;
+  height: 356px;
+  padding: 9px 0 18px 0;
+  border-radius: 9px;
+  box-shadow: 0 6px 27px rgba(207, 212, 222, 0.3);
   z-index: 0;
+  font-family: 'Roboto', sans-serif;
 
   &__image {
     position: absolute;
     object-fit: cover;
     object-position: center;
-    width: 210px;
+    width: 189px;
     bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
@@ -25,8 +27,8 @@ $secondaryColor: #fdbd4a;
   }
 
   &__brand {
-    margin: 6px 0 0 26px;
-    font-size: 27px;
+    margin: 5px 0 0 23px;
+    font-size: 24px;
     font-weight: 600;
     z-index: 2;
   }
@@ -34,28 +36,28 @@ $secondaryColor: #fdbd4a;
   &__description {
     display: block;
     color: $mainColor;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 400;
-    margin: 2px 0 20px 26px;
+    margin: 2px 0 18px 23px;
     z-index: 1;
   }
 
   &__units {
     display: inline;
     position: absolute;
-    top: 67px;
-    right: 23px;
-    margin: 3px 0 20px 26px;
+    top: 60px;
+    right: 22px;
     margin: 3px 0 20px 26px;
     z-index: 4;
+    font-family: 'Roboto', sans-serif;
 
     span {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 32px;
-      height: 32px;
-      font-size: 19px;
+      width: 29px;
+      height: 29px;
+      font-size: 17px;
       font-weight: 600;
       border-radius: 50px;
       background: $secondaryColor;
@@ -70,31 +72,33 @@ $secondaryColor: #fdbd4a;
     justify-content: center;
     align-items: center;
     background: $secondaryColor;
-    width: 224px;
-    height: 42px;
-    top: 284px;
+    width: 201px;
+    height: 36px;
+    top: 254px;
     right: -13px;
     border-radius: 5px 0 0 5px;
-    z-index: 2;
+    z-index: 10;
 
     &__price {
       display: flex;
       align-items: center;
-      margin: 0 32px 0 0px;
-      font-size: 28px;
-      font-weight: 500;
+      margin: 0 27px 0 0px;
+      padding: 2px 0 0 0;
+      font-size: 22px;
+      font-weight: 400;
+      font-family: 'Roboto', sans-serif;
 
       &:before {
         content: '$';
         margin: 0 8px 0 0;
-        font-size: 20px;
-        font-weight: 300;
+        font-size: 18px;
+        font-weight: 400;
       }
     }
 
     & div {
       position: absolute;
-      bottom: -22px;
+      bottom: -23px;
       right: 0;
       width: 0;
       height: 0;
@@ -107,18 +111,20 @@ $secondaryColor: #fdbd4a;
 
   &__btn-get {
     position: absolute;
-    bottom: 20px;
+    bottom: 19px;
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    font-size: 17px;
+    font-size: 16px;
     letter-spacing: 0.2px;
-    padding: 12px 24px;
+    padding: 11px 21px;
     border: transparent;
-    box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 72px rgba(255, 255, 255, 0.4);
     background: $mainColor;
     color: white;
     border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
 
     &:hover {
       background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);

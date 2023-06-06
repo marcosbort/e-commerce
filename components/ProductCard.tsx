@@ -25,7 +25,7 @@ export default function ProductCard({ product, cart, onAddToCart }: Props) {
         <button className={styles['ProductCard__btn-get']}
           onClick={() => onAddToCart(product.id)}
         > Agregar </button>
-      </div>
+      </div >
     </>
   )
 }
