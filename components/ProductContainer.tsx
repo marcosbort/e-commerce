@@ -34,29 +34,17 @@ export default function ProductContainer() {
     setIsLoading(false)
   }, [])
 
-  console.log('Products:', products)
-
-  // handleAddToCart Original:
-  // const handleAddToCart = useCallback((productId: string) => {
-  //   const product: ProductType = products.filter((product) => product.id === productId)[0]
-  //   const productWithUnits = { ...product, units: 1 }
-  //   const newCart: ProductType[] = [...cart, productWithUnits]
-  //   setCart(newCart)
-  //   sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
-  // }, [products, cart])
-
   const handleAddToCart = useCallback((productId: string) => {
-    const product: ProductType = products.filter((product) => product.id === productId)[0]
-    console.log('Included product:', cart.includes(product))
-    if (cart.includes(product)) { // error is here (si lo incluye da false)
-      const newCart = cart.map((product) => (
-        product.units && product.id === productId
-          ? { ...product, units: product.units++ }
+    if (cart.some(product => product.id === productId)) {
+      const newCart = cart.map((product) =>
+        product.id === productId
+          ? { ...product, units: product.units + 1 }
           : { ...product }
-      ))
+      )
       setCart(newCart as ProductType[])
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     } else {
+      const product: ProductType = products.filter((product) => product.id === productId)[0]
       const productWithUnits = { ...product, units: 1 }
       const newCart: ProductType[] = [...cart, productWithUnits]
       setCart(newCart)
@@ -65,11 +53,21 @@ export default function ProductContainer() {
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
-    const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
-    setCart(newCart)
-    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
-    if (newCart.length === 0) {
-      setOpenCartModal(false)
+    if (cart.filter((product) => product.id === productId)[0].units > 1) {
+      const newCart: ProductType[] = cart.map((product) =>
+        product.id === productId
+          ? { ...product, units: product.units - 1 }
+          : { ...product }
+      )
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    } else {
+      const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+      if (newCart.length === 0) {
+        setOpenCartModal(false)
+      }
     }
   }, [cart])
 
@@ -88,6 +86,7 @@ export default function ProductContainer() {
     console.log(storageCart) // inicia null
   }, [])
 
+  console.log('Products:', products)
   console.log('Cart:', cart)
 
   return (
