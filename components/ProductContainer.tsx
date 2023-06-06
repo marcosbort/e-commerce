@@ -35,7 +35,7 @@ export default function ProductContainer() {
   }, [])
 
   const handleAddToCart = useCallback((productId: string) => {
-    if (cart.some(product => product.id === productId)) {
+    if (cart.some((product) => product.id === productId)) {
       const newCart = cart.map((product) =>
         product.id === productId
           ? { ...product, units: product.units + 1 }
@@ -99,7 +99,7 @@ export default function ProductContainer() {
               onClick={() => setOpenCartModal(true)}
             >
               <CartIcon />
-              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span> {/* suma product.units de los product de Cart */}
+              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span>
             </button>
             <a href={`http://wa.me/1122222222?text=${encodeURIComponent(orderText)}`} target='_blank' rel='noreferrer'  >
               <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
