@@ -6,7 +6,7 @@ $heightHeader: 112px;
 $wrap: 1240px;
 $wrap: 1116px;
 $wrapPadding: 18px;
-$gridColum: 198px;
+$gridColum: 190px; // tocar con breackpoints (Full responsive)
 $columnGap: 22px;
 $rowGap: 18px;
 
@@ -15,6 +15,9 @@ $rowGap: 18px;
   justify-content: center;
   padding-top: calc($heightHeader + $rowGap);
   font-family: 'Roboto', sans-serif;
+  @media (max-width: 440px) {
+    zoom: 0.8;
+  }
 
   &__header {
     position: fixed;

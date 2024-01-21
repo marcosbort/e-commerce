@@ -6,14 +6,17 @@ $secondaryColor: #fdbd4a;
 .ProductCard {
   position: relative;
   background: #fff;
-  min-width: 170px;
-  max-width: 225px;
+  width: 100%;
   height: 356px;
   padding: 9px 0 18px 0;
   border-radius: 9px;
   box-shadow: 0 6px 27px rgba(207, 212, 222, 0.3);
   z-index: 0;
   font-family: 'Roboto', sans-serif;
+  @media (max-width: 350px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 
   &__image {
     position: absolute;
@@ -72,7 +75,7 @@ $secondaryColor: #fdbd4a;
     justify-content: center;
     align-items: center;
     background: $secondaryColor;
-    width: 201px;
+    width: 100%;
     height: 36px;
     top: 254px;
     right: -13px;
