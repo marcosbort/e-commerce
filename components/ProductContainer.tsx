@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { ProductType } from '../types'
+import { Product } from '../types'
 import styles from './ProductContainer.module.scss'
-import Product from './Product'
+import ProductCard from './ProductCard'
 import Papa from 'papaparse'
 import axios from 'axios'
 import Spinner from './Spinner'
@@ -11,10 +11,11 @@ import { Modal, Text, Button } from "@deca-ui/react"
 import Cart from './Cart'
 
 export default function ProductContainer() {
-  const [products, setProducts] = useState<ProductType[]>([])
+  const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [cart, setCart] = useState<ProductType[]>([])
+  const [cart, setCart] = useState<Product[]>([])
   const [openCartModal, setOpenCartModal] = useState<boolean>(false)
+  const orderText = cart.reduce((message, product) => message.concat(''), '')
 
   const getProducts = useCallback(async () => {
     setIsLoading(true)
@@ -23,32 +24,57 @@ export default function ProductContainer() {
     )
     Papa.parse(data, {
       header: true,
-      complete: (results) => setProducts(results.data as ProductType[]),
+      complete: (results) => {
+        const stringProducts = results.data as Product[]
+        const productsWithNumberPrice = stringProducts.map((product) => ({ ...product, price: Number(product.price) }))
+        return setProducts(productsWithNumberPrice)
+      },
       error: (error) => error.message,
     })
     setIsLoading(false)
   }, [])
 
   const handleAddToCart = useCallback((productId: string) => {
-    const product: ProductType = products.filter((product) => product.id === productId)[0]
-    const productWithUnits = { ...product, units: 1 }
-    const newCart: ProductType[] = [...cart, productWithUnits]
-    setCart(newCart)
-    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    if (cart.some((product) => product.id === productId)) {
+      const newCart = cart.map((product) =>
+        product.id === productId
+          ? { ...product, units: product.units + 1 }
+          : { ...product }
+      )
+      setCart(newCart as Product[])
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    } else {
+      const product: Product = products.filter((product) => product.id === productId)[0]
+      const productWithUnits = { ...product, units: 1 }
+      const newCart: Product[] = [...cart, productWithUnits]
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    }
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
-    const newCart: ProductType[] = cart.filter((product) => product.id !== productId)
-    setCart(newCart)
-    sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
-    if (newCart.length === 0) {
-      setOpenCartModal(false)
+    if (cart.filter((product) => product.id === productId)[0].units > 1) {
+      const newCart: Product[] = cart.map((product) =>
+        product.id === productId
+          ? { ...product, units: product.units - 1 }
+          : { ...product }
+      )
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+    } else {
+      const newCart: Product[] = cart.filter((product) => product.id !== productId)
+      setCart(newCart)
+      sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
+      if (newCart.length === 0) {
+        setOpenCartModal(false)
+      }
     }
   }, [cart])
 
   const handleResetCart = useCallback(() => {
     setCart([])
     setOpenCartModal(false)
+    sessionStorage.setItem('petFoodsCart', JSON.stringify([]))
   }, [])
 
   useEffect(() => {
@@ -56,12 +82,13 @@ export default function ProductContainer() {
   }, [getProducts])
 
   useEffect(() => {
-    const storageCart: ProductType[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart can be null
+    const storageCart: Product[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart can be null
     storageCart && setCart(storageCart)
     console.log(storageCart) // inicia null
   }, [])
 
-  console.log(cart)
+  console.log('Products:', products)
+  console.log('Cart:', cart)
 
   return (
     <div className={styles['ProductContainer']}>
@@ -73,12 +100,14 @@ export default function ProductContainer() {
               onClick={() => setOpenCartModal(true)}
             >
               <CartIcon />
-              <span>{cart.length > 0 ? cart.reduce((count, product: ProductType) => count + product.units, 0) : 0}</span> {/* suma product.units de los product de Cart */}
+              <span>{cart.length > 0 ? cart.reduce((count, product: Product) => count + product.units, 0) : 0}</span>
             </button>
-            <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
-              <WhatsappIcon />
-              Completar Pedido
-            </button>
+            <a href={`http://wa.me/1122222222?text=${encodeURIComponent(orderText)}`} target='_blank' rel='noreferrer'  >
+              <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
+                <WhatsappIcon />
+                Completar Pedido
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -88,8 +117,9 @@ export default function ProductContainer() {
         ) : (
           products?.map((product) => (
             <div key={product.id}>
-              <Product
+              <ProductCard
                 product={product}
+                cart={cart}
                 onAddToCart={handleAddToCart}
               />
             </div>

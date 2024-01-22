@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;600;700;800;900&family=Bebas+Neue&family=Great+Vibes&family=Lobster&family=Montserrat:wght@500;600;700;800&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap');
+
+$mainColor: #4d2559;
+$secondaryColor: #fdbd4a;
+
+.ProductCard {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  height: 356px;
+  padding: 9px 0 18px 0;
+  border-radius: 9px;
+  box-shadow: 0 6px 27px rgba(207, 212, 222, 0.3);
+  z-index: 0;
+  font-family: 'Roboto', sans-serif;
+  @media (max-width: 350px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__image {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width: 189px;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  &__brand {
+    margin: 5px 0 0 23px;
+    font-size: 24px;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  &__description {
+    display: block;
+    color: $mainColor;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 2px 0 18px 23px;
+    z-index: 1;
+  }
+
+  &__units {
+    display: inline;
+    position: absolute;
+    top: 60px;
+    right: 22px;
+    margin: 3px 0 20px 26px;
+    z-index: 4;
+    font-family: 'Roboto', sans-serif;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 29px;
+      height: 29px;
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 50px;
+      background: $secondaryColor;
+      color: $mainColor;
+      padding: 1px 0 0 0;
+    }
+  }
+
+  &__etiquet {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $secondaryColor;
+    width: 100%;
+    height: 36px;
+    top: 254px;
+    right: -13px;
+    border-radius: 5px 0 0 5px;
+    z-index: 10;
+
+    &__price {
+      display: flex;
+      align-items: center;
+      margin: 0 27px 0 0px;
+      padding: 2px 0 0 0;
+      font-size: 22px;
+      font-weight: 400;
+      font-family: 'Roboto', sans-serif;
+
+      &:before {
+        content: '$';
+        margin: 0 8px 0 0;
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+
+    & div {
+      position: absolute;
+      bottom: -23px;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 13px solid #c58102;
+      border-bottom: 10px solid transparent;
+      border-right: 13px solid transparent;
+      z-index: -6;
+    }
+  }
+
+  &__btn-get {
+    position: absolute;
+    bottom: 19px;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    padding: 11px 21px;
+    border: transparent;
+    box-shadow: 0px 0px 72px rgba(255, 255, 255, 0.4);
+    background: $mainColor;
+    color: white;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+
+    &:hover {
+      background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
+    }
+
+    &:active {
+      transform: translate(-50%, 2px);
+    }
+  }
+}
