@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Product from '../components/Product'
+import Product from '../components/ProductCard'
 import ProductContainer from '../components/ProductContainer'
 
 const Home: NextPage = () => {
@@ -17,4 +17,3 @@ const Home: NextPage = () => {
 }
 
 export default Home
- 
