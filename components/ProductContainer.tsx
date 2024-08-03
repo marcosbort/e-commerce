@@ -7,14 +7,14 @@ import axios from 'axios'
 import Spinner from './Spinner'
 import { CartIcon, WhatsappIcon } from './Icons'
 import { getPetFood } from '../services/petFoodServices' // move getProducts to Services
-import { Modal, Text, Button } from "@deca-ui/react"
+// import { Modal } from "@deca-ui/react"
 import Cart from './Cart'
 
 export default function ProductContainer() {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [cart, setCart] = useState<Product[]>([])
-  const [openCartModal, setOpenCartModal] = useState<boolean>(false)
+  // const [openCartModal, setOpenCartModal] = useState<boolean>(false)
   const orderText = cart.reduce((message, product) => message.concat(''), '')
 
   const getProducts = useCallback(async () => {
@@ -126,7 +126,7 @@ export default function ProductContainer() {
           ))
         )}
       </div>
-      <Modal
+      {/* <Modal
         closeButton open={openCartModal}
         setOpen={setOpenCartModal}
       >
@@ -135,7 +135,12 @@ export default function ProductContainer() {
           onDeleteProduct={handleDeleteProduct}
           onResetCart={handleResetCart}
         />
-      </Modal>
+      </Modal> */}
+        {/* <Cart
+          cart={cart}
+          onDeleteProduct={handleDeleteProduct}
+          onResetCart={handleResetCart}
+        /> */}
     </div>
   )
 }
