@@ -1,6 +1,6 @@
 import { Product } from "../types";
 import styles from './Cart.module.scss'
-import { DeleteIcon } from "./Icons";
+import { DeleteIcon } from "./common/Icons";
 
 interface Props {
   cart: Product[]

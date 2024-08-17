@@ -4,8 +4,8 @@ import styles from './ProductContainer.module.scss'
 import ProductCard from './ProductCard'
 import Papa from 'papaparse'
 import axios from 'axios'
-import Spinner from './Spinner'
-import { CartIcon, WhatsappIcon } from './Icons'
+import Spinner from './common/Spinner'
+import { CartIcon, WhatsappIcon } from './common/Icons'
 import { getPetFood } from '../services/petFoodServices' // move getProducts to Services
 // import { Modal } from "@deca-ui/react"
 import Cart from './Cart'
