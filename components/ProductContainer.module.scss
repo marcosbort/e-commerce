@@ -27,7 +27,7 @@ $rowGap: 18px;
     &__wrap {
       position: relative;
       max-width: $wrap;
-      height: $heightHeader;
+      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,7 +35,7 @@ $rowGap: 18px;
     }
 
     &__logo {
-      height: 92px;
+      height: 90px;
       margin: 0 0 0 $wrapPadding;
       transform: translate(-4px, -4px);
     }
@@ -61,7 +61,11 @@ $rowGap: 18px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, var(--main-color) 0%, #824f92 100%);
+          background: linear-gradient(
+            90deg,
+            var(--main-color) 0%,
+            #824f92 100%
+          );
         }
 
         &:active {
@@ -95,7 +99,11 @@ $rowGap: 18px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, var(--secondary-color) 0%, #ffcc6d 100%);
+          background: linear-gradient(
+            90deg,
+            var(--secondary-color) 0%,
+            #ffcc6d 100%
+          );
         }
 
         &:active {

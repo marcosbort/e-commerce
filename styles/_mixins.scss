@@ -1,0 +1,35 @@
+@mixin tiny-mobile {
+  @media (max-width: 374px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 901px) {
+    @content;
+  }
+}
+
+@mixin flex(
+  $direction: row,
+  $justify: center,
+  $align: center,
+  $wrap: wrap,
+  $gap: null
+) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+/* para declarar el 'gap', hay que declarar todo lo anterior:
+@include flex(row, flex-start, flex-start, wrap, 20px);
+*/
