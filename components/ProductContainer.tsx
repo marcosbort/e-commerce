@@ -37,7 +37,7 @@ export default function ProductContainer() {
     if (cart.some((product) => product.id === productId)) {
       const newCart = cart.map((product) =>
         product.id === productId
-          ? { ...product, units: product.units + 1 }
+          ? { ...product, units: (product?.units ?? 0) + 1 }
           : { ...product }
       )
       setCart(newCart as Product[])
@@ -55,7 +55,7 @@ export default function ProductContainer() {
     if (cart.filter((product) => product.id === productId)[0].units > 1) {
       const newCart: Product[] = cart.map((product) =>
         product.id === productId
-          ? { ...product, units: product.units - 1 }
+          ? { ...product, units: (product?.units ?? 0) - 1 }
           : { ...product }
       )
       setCart(newCart)
@@ -65,7 +65,7 @@ export default function ProductContainer() {
       setCart(newCart)
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
       if (newCart.length === 0) {
-        setOpenCartModal(false)
+        setIsOpenCart(false)
       }
     }
   }, [cart])
@@ -85,7 +85,7 @@ export default function ProductContainer() {
   }, [getProducts])
 
   useEffect(() => {
-    const storageCart: Product[] = JSON.parse(sessionStorage.getItem('petFoodsCart')) // error: storageCart can be null
+    const storageCart: Product[] = JSON.parse(sessionStorage.getItem('petFoodsCart') ?? '[]') // error: storageCart can be null
     storageCart && setCart(storageCart)
     console.log(storageCart) // inicia null
   }, [])
@@ -111,7 +111,7 @@ export default function ProductContainer() {
                 onClick={handleIsOpenCart}
               >
                 <CartIcon />
-                <span>{cart.length > 0 ? cart.reduce((count, product: Product) => count + product.units, 0) : 0}</span>
+                <span>{cart.length > 0 ? cart.reduce((count, product: Product) => count + (product?.units ?? 0), 0) : 0}</span>
               </button>
               <a href={`http://wa.me/1122222222?text=${encodeURIComponent(orderText)}`} target='_blank' rel='noreferrer'  >
                 <button className={styles['ProductContainer__header__buttons__btn-to-complete']} >
