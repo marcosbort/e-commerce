@@ -43,7 +43,7 @@ export default function ProductContainer() {
       setCart(newCart as Product[])
       sessionStorage.setItem('petFoodsCart', JSON.stringify(newCart))
     } else {
-      const product: Product = products.filter((product) => product.id === productId)[0]
+      const product: Product = products.find((product) => product.id === productId) as Product
       const productWithUnits = { ...product, units: 1 }
       const newCart: Product[] = [...cart, productWithUnits]
       setCart(newCart)
@@ -52,7 +52,7 @@ export default function ProductContainer() {
   }, [products, cart])
 
   const handleDeleteProduct = useCallback((productId: string) => {
-    if (cart.filter((product) => product.id === productId)[0].units > 1) {
+    if (cart.find((product) => product.id === productId)?.units > 1) {
       const newCart: Product[] = cart.map((product) =>
         product.id === productId
           ? { ...product, units: (product?.units ?? 0) - 1 }
