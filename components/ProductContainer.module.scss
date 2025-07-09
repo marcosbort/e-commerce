@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;600;700;800;900&family=Bebas+Neue&family=Great+Vibes&family=Lobster&family=Montserrat:wght@500;600;700;800&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap');
 
-$mainColor: #4d2559;
-$secondaryColor: #fdbd4a;
 $heightHeader: 112px;
-$wrap: 1240px;
-$wrap: 1116px;
+$wrap: 1200px;
 $wrapPadding: 18px;
 $gridColum: 190px; // tocar con breackpoints (Full responsive)
 $columnGap: 22px;
@@ -30,7 +27,7 @@ $rowGap: 18px;
     &__wrap {
       position: relative;
       max-width: $wrap;
-      height: $heightHeader;
+      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -38,10 +35,9 @@ $rowGap: 18px;
     }
 
     &__logo {
-      height: 102px;
-      height: 92px;
+      height: 90px;
       margin: 0 0 0 $wrapPadding;
-      transform: translateY(-4px);
+      transform: translate(-4px, -4px);
     }
 
     &__buttons {
@@ -56,7 +52,7 @@ $rowGap: 18px;
         margin: 0 $wrapPadding 0 0;
         padding: 0 12px;
         border: transparent;
-        background: $mainColor;
+        background: var(--main-color);
         font-size: 16px;
         font-family: 'Roboto', sans-serif;
         letter-spacing: 0.2px;
@@ -65,7 +61,11 @@ $rowGap: 18px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, $mainColor 0%, #824f92 100%);
+          background: linear-gradient(
+            90deg,
+            var(--main-color) 0%,
+            #824f92 100%
+          );
         }
 
         &:active {
@@ -93,13 +93,17 @@ $rowGap: 18px;
         margin: 0 12px 0 0;
         padding: 0 11px;
         color: white;
-        background: $secondaryColor;
+        background: var(--secondary-color);
         border: transparent;
         border-radius: 6px;
 
         &:hover {
           background: rgb(2, 0, 36);
-          background: linear-gradient(90deg, $secondaryColor 0%, #ffcc6d 100%);
+          background: linear-gradient(
+            90deg,
+            var(--secondary-color) 0%,
+            #ffcc6d 100%
+          );
         }
 
         &:active {
@@ -114,7 +118,7 @@ $rowGap: 18px;
           width: 23px;
           height: 23px;
           margin: 0 7px 0 0;
-          color: $mainColor;
+          color: var(--main-color);
           scale: 1.1;
         }
 
@@ -126,7 +130,7 @@ $rowGap: 18px;
           height: 29px;
           border-radius: 50px;
           background: #fff;
-          color: $mainColor;
+          color: var(--main-color);
           padding: 1px 0 0 0;
         }
       }

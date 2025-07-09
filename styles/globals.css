@@ -1,3 +1,9 @@
+:root {
+  --main-color: #4d2559;
+  --secondary-color: #e7bc94;
+  --secondary-color: #fdbd4a;
+}
+
 html,
 body {
   padding: 0;
@@ -21,7 +27,6 @@ a {
   }
   body {
     color: rgb(39, 39, 39);
-    background: white;
     background: #ececec;
   }
 }
